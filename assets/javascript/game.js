@@ -80,11 +80,28 @@ document.onkeypress = function(event) {
     document.getElementById("currentMessage").innerHTML="Guess a letter.";
     document.onkeypress = function(event) {
         var guess = event.key.toLowerCase();
-        for (i=0; i<guessedLetters.length; i++) {
-                guessedLetters.push(guess);
+        if (guessedLetters.includes(guess)) {
+            document.getElementById("currentMessage").innerHTML="You already guessed this letter. Guess again";
         }
-        console.log(guess);
-        console.log(guessedLetters);
+        else {
+            guessedLetters.push(guess);
+            document.getElementById("lettersGuessed").innerHTML= guessedLetters;
+            console.log(guess);
+            console.log(guessedLetters);
+            
+            for (i=0; i<wordToGuess.length; i++) {
+                if (guess === wordToGuess.charAt(i)) {
+                    unguessedWord.splice(i,1,guess);
+                    console.log(unguessedWord);
+                    document.getElementById("guessWord").innerHTML=unguessedWord;
+                }
+                else {
+                    document.getElementById("currentMessage").innerHTML="Nice try. Guess again";
+                }
+            }
+        }
+    }
+
 
 //checks to see if letter already guessed, if not checks to see if in wordToGuess
 //if in wordToGuess, assigns the letter to the character index of unguessedWord & reveals to user.
@@ -93,11 +110,8 @@ document.onkeypress = function(event) {
 
 
     // for (i=0; i<guessedLetters.length; i++) {
-    //     if (guess === guessedLetters.indexOf(i)) {
-    //         document.getElementById("currentMessage").innerHTML="You already guessed this letter. Guess again.";
-    //     }
 
-    //     else {
+    //     if {
     //         for (i=0; i<wordToGuess.length; i++) {
     //             if (guess === wordToGuess.charAt(i)) {
     //                 unguessedWord.replace(indexOf(i), guess);
@@ -111,7 +125,5 @@ document.onkeypress = function(event) {
     //         }
     //     }
     // }
-
-}
 
 }
