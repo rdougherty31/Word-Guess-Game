@@ -48,15 +48,29 @@ var phillyWords = [
     "wawa",
     "juneteenth"
 ];
+
 var wins = 0;
 var losses = 0;
-var guessesLeft=20;
+var wrongGuesses=5;
 var correctLetters=0;
 var unguessedWord = [];
 var guessedLetters = [];
+var wrongGuessesHTML = document.getElementById("wrongGuesses");
+var correctLettersHTML = document.getElementById("correctLetters");
+var guessedLettersHTML = document.getElementById("lettersGuessed");
+
+function startGame() {
+    console.log("starting game");
+    wrongGuesses=5;
+    correctLetters=0;
+    unguessedWord = [];
+    guessedLetters = [];
+    wrongGuessesHTML.innerHTML=wrongGuesses;
+    correctLettersHTML.innerHTML=correctLetters;
+    guessedLettersHTML.innerHTML=guessedLetters;
 
 
-document.onkeypress = function(event) {
+
 
     //Generates random word from phillyWords array
         var wordToGuess = phillyWords[Math.floor(Math.random()*phillyWords.length)];
@@ -85,46 +99,44 @@ document.onkeypress = function(event) {
                 document.getElementById("currentMessage").innerHTML="You already guessed this letter. Guess again";
             }
             else {
-                guessesLeft--;
                 guessedLetters.push(guess);
-                document.getElementById("lettersGuessed").innerHTML= guessedLetters;
-                console.log(guess);
-                console.log(guessedLetters);
-                console.log(guessesLeft);
-                document.getElementById("guessesLeft").innerHTML=guessesLeft;
+                guessedLettersHTML.innerHTML= guessedLetters;
 
-                
+                var isRightGuess = false;
                 for (i=0; i<wordToGuess.length; i++) {
                     if (guess === wordToGuess.charAt(i)) {
                         unguessedWord.splice(i,1,guess);
                         correctLetters++;
-                        console.log(unguessedWord);
-                        console.log(correctLetters);
+                        isRightGuess=true;
                         document.getElementById("guessWord").innerHTML=unguessedWord.join(" ");
                         document.getElementById("currentMessage").innerHTML="Good guess!";
                         document.getElementById("correctLetters").innerHTML=correctLetters;
-                    }
-                    else {
+                    } else {
                         document.getElementById("currentMessage").innerHTML="Nice try. Guess again";
                     }
-                //check if win or lose -- win broken
-                if (!unguessedWord.includes("-")) 
-                        {
-                            alert("you win!");
-                            wins++;
-                            document.getElementById("wins").innerHTML=wins;
-                            break;
-                        }
-                else if (guessesLeft === 0) {
-                    alert("you lose!");
+
+                    //check if win
+                    if (!unguessedWord.includes("-")) {
+                        alert("You win!");
+                        wins++;
+                        document.getElementById("wins").innerHTML=wins;
+                        break;
+                    }
+                }
+                //if guess was wrong, decrease guesses left
+                if (!isRightGuess) {
+                    wrongGuesses--;
+                    wrongGuessesHTML.innerHTML=wrongGuesses;
+                }
+                //check if lost
+                if (wrongGuesses === 0) {
+                    alert("You lose!");
                     losses++;
-                    document.getElementById("wins").innerHTML=wins;
-                    break;
+                    document.getElementById("losses").innerHTML=losses;
                 }
-                else {
-                    continue;
-                }
-                }
+
             }
         }
-    }
+
+
+}

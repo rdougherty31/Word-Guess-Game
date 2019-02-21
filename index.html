@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Word Guess Game</title>
-    <script src="assets/javascript/game.js"></script>
+
 </head>
 <body>
 
 <h1>Let's play Hangman!</h1>
 <br><br>
+
+<button onclick="startGame()">Click To Start</button>
+
 
 <div id="currentMessage"></div>
 <br><br>
@@ -23,24 +26,25 @@
 <span id="losses"></span>
 <br><br>
 
-<span class="gameOverHide">Guesses Left: </span>
-<span id="guessesLeft" class="gameOverHide"></span>
-<br><br><br>
-
 <div id="guessWord" class="gameOverHide"></div>
 <br><br>
 
-<span class="gameOverHide">Correct letters</span>
-<span id="correctLetters" class="gameOverHide"></span>
+<span class="gameOverHide">Wrong Guesses Left: </span>
+<span id="wrongGuesses" class="gameOverHide">5</span>
+<br><br><br>
+
+<span class="gameOverHide">Correct letters: </span>
+<span id="correctLetters" class="gameOverHide">0</span>
 <br><br><br>
 
 
 <div class="gameOverHide">Letters Guessed: </div>
-<div id="lettersGuessed" class="gameOverHide"></div>
+<div id="lettersGuessed" class="gameOverHide"> </div>
 <br><br><br>
 
 <div id="gameOver"></div>
 <br><br><br>
-    
+
+<script src="assets/javascript/game.js"></script>
 </body>
 </html>
