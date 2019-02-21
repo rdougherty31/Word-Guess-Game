@@ -1,0 +1,86 @@
+html, body {
+    background-image: url("../images/cityhall2.jpg");
+    background-color: black;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-blend-mode: luminosity;
+}
+.winLossRecord {
+    padding: 1rem;
+    text-align: center;
+    border-top: 1px solid #383737;
+    border-bottom: 1px solid #383737;
+    background: rgba(0,0,0,.25);
+    margin-top: 1rem;
+}
+.winLossRecord span {
+    font-size: 2rem;
+    padding: 1rem 0;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+.losses {
+    margin-left: 20%;
+}
+h1 {
+    text-align: center;
+    color:#c00;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 5rem;
+    padding: 1rem;
+    margin-top: 2rem;
+    text-shadow: 0 0 1.5rem black;
+    /* -webkit-text-stroke: 10px #ooo; */
+}
+button {
+    width: 10%;
+    height: 9rem;
+    margin: 2rem 45% 3rem 45%;
+    border: 1px solid red;
+    border-radius: 100%;
+    background: #eee;
+    color: #c00;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 2rem;
+    -webkit-animation-name: bgChange;
+    -webkit-animation-duration: 6s;
+    -webkit-animation-iteration-count: 5;
+    animation-name: bgChange;
+    animation-duration: 6s;
+    animation-iteration-count: 5;
+}
+.container {
+    height: 15rem;
+}
+.leftCol, .middleCol, .rightCol {
+    display: inline-block;
+    background: rgba(255,255,255,.9);
+    width: 20%;
+    height: 100%;
+    text-align: center;
+    color: #c00;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+}
+.leftCol {
+    margin-left: 20%;
+}
+.leftCol div:first-child, .rightCol div:first-child, .middleCol div:first-child {
+    margin-top: 6rem;
+}
+
+/* Button color change animation */
+@-webkit-keyframes bgChange {
+    0% {background-color:rgba(255,255,255,.9);}
+    50% {background-color: rgba(0,0,0,.9);}
+    100% {background-color:rgba(255,255,255,.9);}
+}
+  @keyframes bgChange {
+    0% {background-color:rgba(255,255,255,.9);}
+    50% {background-color: rgba(0,0,0,.9);}
+    100% {background-color:rgba(255,255,255,.9);}  
+}

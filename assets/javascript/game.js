@@ -54,10 +54,10 @@ var losses = 0;
 var wrongGuesses=5;
 var correctLetters=0;
 var unguessedWord = [];
-var guessedLetters = [];
+var guessedLetters = [ ];
 var wrongGuessesHTML = document.getElementById("wrongGuesses");
 var correctLettersHTML = document.getElementById("correctLetters");
-var guessedLettersHTML = document.getElementById("lettersGuessed");
+var guessedLettersHTML = document.getElementById("guessedLetters");
 
 function startGame() {
     console.log("starting game");
@@ -112,7 +112,7 @@ function startGame() {
                         document.getElementById("currentMessage").innerHTML="Good guess!";
                         document.getElementById("correctLetters").innerHTML=correctLetters;
                     } else {
-                        document.getElementById("currentMessage").innerHTML="Nice try. Guess again";
+                        document.getElementById("currentMessage").innerHTML="Nice try. Guess again.";
                     }
 
                     //check if win
@@ -131,6 +131,8 @@ function startGame() {
                 //check if lost
                 if (wrongGuesses === 0) {
                     alert("You lose!");
+                    document.getElementById("currentMessage").innerHTML="The word is:";
+                    document.getElementById("guessWord").innerHTML=wordToGuess;                    
                     losses++;
                     document.getElementById("losses").innerHTML=losses;
                 }
