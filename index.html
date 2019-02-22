@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<h1>Let's Play Hangman!</h1>
+<h1>Let's Play Word Guess!</h1>
 <!--Wins & Losses-->
 <div class="winLossRecord">
     <span>Wins: </span>
@@ -19,7 +19,10 @@
     <span id="losses">0</span>
 </div>
 
-<button onclick="startGame()">Start!</button>
+<!-- <button onclick="startGame()">Start!</button> -->
+
+<audio id="music" src="assets/music/FreshPrinceTheme.mp3" controls="controls" autoplay="autoplay" loop="loop">Error: Your browser does not support this audio player.</audio>
+
 
 <div class="container">
 
@@ -30,15 +33,11 @@
         <span class="gameOverHide">Guesses Left: </span>
         <span id="wrongGuesses" class="gameOverHide">5</span>
     </div>
-    <div>
-        <span class="gameOverHide">Correct letters: </span>
-        <span id="correctLetters" class="gameOverHide">0</span>
-    </div>
 </div>
 
 <!--Middle Column : Current Message & Word To Guess-->
 <div class="middleCol">
-    <div id="currentMessage"></div>
+    <div id="currentMessage">Press any key to begin.</div>
     <div id="guessWord" class="gameOverHide"></div>
 </div>
 
@@ -46,12 +45,12 @@
 <!--Right Column : Letters Guessed-->
 <div class="rightCol">
     <div>
-        <div class="gameOverHide">Letters Guessed: </div>
+        <div class="gameOverHide">Your Guesses So Far: </div>
         <div id="guessedLetters" class="gameOverHide"> </div>
     </div>
 </div>
-
 </div>
+
 
 <script src="assets/javascript/game.js"></script>
 </body>
