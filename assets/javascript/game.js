@@ -55,23 +55,24 @@ var phillyWords = [
 
 var wins = 0;
 var losses = 0;
-var wrongGuesses=5;
+var guessesLeft=5;
 var unguessedWord = [];
 var guessedLetters = [ ];
-var wrongGuessesHTML = document.getElementById("wrongGuesses");
+var guessesLeftHTML = document.getElementById("guessesLeft");
 var guessedLettersHTML = document.getElementById("guessedLetters");
+var rockySong = new Audio("assets/music/RockyThemeSong.mp3");
 
+function playRocky() {
+    rockySong.play();
+}
 
 document.onkeypress = function startGame() {
     console.log("starting game");
-    wrongGuesses=5;
+    guessesLeft=5;
     unguessedWord = [];
     guessedLetters = [];
-    wrongGuessesHTML.innerHTML=wrongGuesses;
+    guessesLeftHTML.innerHTML=guessesLeft;
     guessedLettersHTML.innerHTML=guessedLetters;
-
-
-
 
     //Generates random word from phillyWords array
         var wordToGuess = phillyWords[Math.floor(Math.random()*phillyWords.length)];
@@ -79,12 +80,12 @@ document.onkeypress = function startGame() {
 
 
     //creates new array unguessedWord and pushes _ for each letter of wordToGuess and " " for each space
-        for (i=0; i<wordToGuess.length; i++) {
+        for (var i=0; i<wordToGuess.length; i++) {
             if (wordToGuess.charAt(i) !== " ") {
                 unguessedWord.push("_");
             }
             else {
-                unguessedWord.push("&#9672");
+                unguessedWord.push("<br>");
             }
             console.log(unguessedWord);
         }
@@ -94,51 +95,61 @@ document.onkeypress = function startGame() {
 
         //prompt user to guess a letter
         document.getElementById("currentMessage").innerHTML="Guess a letter.";
-        document.onkeypress = function(event) {
+        document.onkeypress = function checkLetter() {
             var guess = event.key.toLowerCase();
-            if (guessedLetters.includes(guess)) {
-                document.getElementById("currentMessage").innerHTML="You already guessed this letter. Guess again";
-            }
-            else {
-                guessedLetters.push(guess.toUpperCase());
-                guessedLettersHTML.innerHTML= guessedLetters.join(" ");
+            var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+            //checks if key pressed is a letter
+            if (letters.includes(guess) === false) {
+                console.log("Not a letter");
+                document.getElementById("currentMessage").innerHTML="Not a letter - guess again.";
+            } else {
+                //checks if key pressed was already guessed
+                if (guessedLetters.includes(guess)) {
+                    document.getElementById("currentMessage").innerHTML="You already guessed this letter. Guess again";
+                }
+                //changes letter pressed into Uppercase & pushes into guessedLetters array 
+                else {
+                    guessedLetters.push(guess.toUpperCase());
+                    guessedLettersHTML.innerHTML= guessedLetters.join(" ");
+                    var isRightGuess = false;
+                    //checks if letter pressed is in guessWord & pushes into unguessedWord array if so
+                    //if not, tells user to guess again
+                    for (var i=0; i<wordToGuess.length; i++) {
+                        if (guess === wordToGuess.charAt(i)) {
+                            unguessedWord.splice(i,1,guess);
+                            isRightGuess=true;
+                            document.getElementById("guessWord").innerHTML=unguessedWord.join(" ");
+                            document.getElementById("currentMessage").innerHTML="Good guess!";
+                        } else {
+                            document.getElementById("currentMessage").innerHTML="Nice try. Guess again.";
+                        }
 
-                var isRightGuess = false;
-                for (i=0; i<wordToGuess.length; i++) {
-                    if (guess === wordToGuess.charAt(i)) {
-                        unguessedWord.splice(i,1,guess);
-                        isRightGuess=true;
-                        document.getElementById("guessWord").innerHTML=unguessedWord.join(" ");
-                        document.getElementById("currentMessage").innerHTML="Good guess!";
-                    } else {
-                        document.getElementById("currentMessage").innerHTML="Nice try. Guess again.";
+                        //checks if user won & if so increases wins by one
+                        if (!unguessedWord.includes("_")) {
+                            playRocky();
+                            alert("You win!");
+                            wins++;
+                            document.getElementById("wins").innerHTML=wins;
+                            startGame();
+                            rockySong.pause();
+                        }
+                    }
+                    //if letter pressed not in guessWord, decreases guesses left by one
+                    if (!isRightGuess) {
+                        guessesLeft--;
+                        guessesLeftHTML.innerHTML=guessesLeft;
+                    }
+                    //checks if user lost & if so increases losses by 1 & automatically restarts game after 3 seconds
+                    if (guessesLeft === 0) {
+                        alert("You lose!");
+                        document.getElementById("currentMessage").innerHTML="The word is:";
+                        document.getElementById("guessWord").innerHTML=wordToGuess.toUpperCase();
+                        losses++;
+                        document.getElementById("losses").innerHTML=losses;
+                        setTimeout(startGame, 2000);
                     }
 
-                    //check if win
-                    if (!unguessedWord.includes("_")) {
-                        alert("You win!");
-                        wins++;
-                        document.getElementById("wins").innerHTML=wins;
-                        startGame();
-                    }
                 }
-                //if guess was wrong, decrease guesses left
-                if (!isRightGuess) {
-                    wrongGuesses--;
-                    wrongGuessesHTML.innerHTML=wrongGuesses;
-                }
-                //check if lost
-                if (wrongGuesses === 0) {
-                    alert("You lose!");
-                    document.getElementById("currentMessage").innerHTML="The word is:";
-                    document.getElementById("guessWord").innerHTML=wordToGuess;
-                    losses++;
-                    document.getElementById("losses").innerHTML=losses;
-                    setTimeout(startGame, 3000);
-                }
-
             }
         }
-
-
 }

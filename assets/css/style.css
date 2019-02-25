@@ -9,7 +9,7 @@ html, body {
 }
 .winLossRecord {
     padding: 1rem;
-    text-align: center;
+    /* text-align: center; */
     border-top: 1px solid #383737;
     border-bottom: 1px solid #383737;
     background: rgba(0,0,0,.5);
@@ -22,8 +22,15 @@ html, body {
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
 }
-.losses {
-    margin-left: 20%;
+.winDiv, .lossDiv {
+    display: inline-block;
+    width: 23%;
+}
+.winDiv {
+    margin-left: 27%;
+}
+.lossDiv {
+    text-align: right;
 }
 h1 {
     text-align: center;
@@ -32,9 +39,8 @@ h1 {
     font-weight: bold;
     font-size: 5rem;
     padding: 1rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
     text-shadow: 0 0 1.5rem black;
-    /* -webkit-text-stroke: 10px #ooo; */
 }
 /* button {
     width: 10%;
@@ -60,12 +66,12 @@ h1 {
 .leftCol, .middleCol, .rightCol {
     display: inline-block;
     background: rgba(230,230,230,.95);
-    width: 23%;
+    width: 23.3%;
     height: 100%;
     text-align: center;
     color: #c00;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     border-radius: 250px;
     vertical-align: bottom;
 }
@@ -81,29 +87,38 @@ h1 {
     font-weight: bold;
 }
 .leftCol {
-    margin-left: 14%;
+    margin-left: 15%;
 }
 .leftCol div:first-child, .rightCol div:first-child, .middleCol div:first-child {
-    margin-top: 4rem;
+    margin-top: 3rem;
+}
+#guessesLeft {
+    font-size: 8rem;
+    line-height: 1.25;
+}
+#currentMessage, #guessWord, #guessedLetters {
+    padding: 1.25rem 1rem;
 }
 #currentMessage {
     text-shadow: 0 0 50px red;
+    padding-bottom: 0;
 }
-#currentMessage, #guessWord, #guessedLetters {
-    padding: .5rem 1rem;
+#guessWord {
+    padding-top: 0;
 }
-/* #guessWord, #guessedLetters {
-    margin-top: .8rem;
-} */
 #guessedLetters {
     font-weight: bold;
 }
 audio {
-    width: 18%;
+    width: 20%;
     margin: 2.5rem auto 2.5rem 40%;
 }
+.wrapper {
+    z-index: 5;
+    background: rgba(0,0,0,0.0);
+}
 /* Button color change animation */
-@-webkit-keyframes bgChange {
+/* @-webkit-keyframes bgChange {
     0% {background-color:rgba(255,255,255,.9);}
     50% {background-color: rgba(0,0,0,.9);}
     100% {background-color:rgba(255,255,255,.9);}
@@ -112,4 +127,4 @@ audio {
     0% {background-color:rgba(255,255,255,.9);}
     50% {background-color: rgba(0,0,0,.9);}
     100% {background-color:rgba(255,255,255,.9);}  
-}
+} */
