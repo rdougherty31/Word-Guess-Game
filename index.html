@@ -10,51 +10,46 @@
 </head>
 <body id="body">
 <div class="wrapper">
-<h1>Let's Play Word Guess!</h1>
-<!--Wins & Losses-->
-<div class="winLossRecord">
-    <div class="recordContainer">
-        <div class="winDiv">
-            <span>Wins: </span>
-            <span id="wins">0</span>
+    <h1>Let's Play Word Guess!</h1>
+    <!--Wins & Losses-->
+    <div class="winLossRecord">
+        <div class="recordContainer">
+            <div class="winDiv">
+                <span>Wins: </span>
+                <span id="wins">0</span>
+            </div>
+            <div class="lossDiv">
+                <span class="losses">Losses: </span>
+                <span id="losses">0</span>
+            </div>
         </div>
-        <div class="lossDiv">
-            <span class="losses">Losses: </span>
-            <span id="losses">0</span>
+    </div>
+    <!-- music with controls -->
+    <audio id="music" src="assets/music/FreshPrinceTheme.mp3" controls="controls" autoplay="autoplay" loop="loop">Error: Your browser does not support this audio player.</audio>
+
+    <div class="container">
+        <!--Left Column : Guesses left, Correct Letters, & Letters Guessed-->
+        <div class="leftCol">
+            <div>
+                <span>Guesses Left: </span>
+                <br>
+                <span id="guessesLeft">5</span>
+            </div>
+        </div>
+        <!--Middle Column : Current Message & Word To Guess-->
+        <div class="middleCol">
+            <div id="currentMessage">Press any jawn to begin.</div>
+            <div id="guessWord"></div>
+        </div>
+
+        <!--Right Column : Letters Guessed-->
+        <div class="rightCol">
+            <div>
+                <div>Your Guesses So Far: </div>
+                <div id="guessedLetters"> </div>
+            </div>
         </div>
     </div>
-</div>
-
-<!-- music with controls -->
-<audio id="music" src="assets/music/FreshPrinceTheme.mp3" controls="controls" autoplay="autoplay" loop="loop">Error: Your browser does not support this audio player.</audio>
-
-
-<div class="container">
-
-<!--Left Column : Guesses left, Correct Letters, & Letters Guessed-->
-<div class="leftCol">
-    <div>
-        <span>Guesses Left: </span>
-        <br>
-        <span id="guessesLeft">5</span>
-    </div>
-</div>
-
-<!--Middle Column : Current Message & Word To Guess-->
-<div class="middleCol">
-    <div id="currentMessage">Press any jawn to begin.</div>
-    <div id="guessWord"></div>
-</div>
-
-
-<!--Right Column : Letters Guessed-->
-<div class="rightCol">
-    <div>
-        <div>Your Guesses So Far: </div>
-        <div id="guessedLetters"> </div>
-    </div>
-</div>
-</div>
 </div>
 
 <script src="assets/javascript/game.js"></script>

@@ -41,6 +41,12 @@ h1 {
     padding: 1rem;
     margin-top: 1rem;
     text-shadow: 0 0 1.5rem black;
+    -webkit-animation-name: fontColorChange;
+    -webkit-animation-duration: 6s;
+    -webkit-animation-iteration-count: 5;
+    animation-name: fontColorChange;
+    animation-duration: 6s;
+    animation-iteration-count: 5;
 }
 /* button {
     width: 10%;
@@ -117,6 +123,16 @@ audio {
     z-index: 5;
     background: rgba(0,0,0,0.0);
 }
+@-webkit-keyframes fontColorChange {
+    0% {color: rgba(204,0,0,1.0);}
+    50% {color: rgba(204,0,0,0.5);}
+    100% {color: rgba(204,0,0,1.0);}
+    }
+@keyframes fontColorChange {
+    0% {color: rgba(204,0,0,1.0);}
+    50% {color: rgba(204,0,0,0.5);}
+    100% {color: rgba(204,0,0,1.0);}
+    }
 /* Button color change animation */
 /* @-webkit-keyframes bgChange {
     0% {background-color:rgba(255,255,255,.9);}
