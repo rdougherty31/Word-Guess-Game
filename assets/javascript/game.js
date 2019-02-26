@@ -1,7 +1,3 @@
-// window.onload = function playMusic() {
-//     document.getElementById("music").play();
-// }
-
 var phillyWords = [
     "liberty bell",
     "rocky",
@@ -67,7 +63,6 @@ function playRocky() {
 }
 
 document.onkeypress = function startGame() {
-    console.log("starting game");
     guessesLeft = 5;
     unguessedWord = [];
     guessedLetters = [];
@@ -76,8 +71,6 @@ document.onkeypress = function startGame() {
 
     //Generates random word from phillyWords array
     var wordToGuess = phillyWords[Math.floor(Math.random() * phillyWords.length)];
-    console.log(wordToGuess);
-
 
     //creates new array unguessedWord and pushes _ for each letter of wordToGuess and " " for each space
     for (var i = 0; i < wordToGuess.length; i++) {
@@ -87,7 +80,6 @@ document.onkeypress = function startGame() {
         else {
             unguessedWord.push("<br>");
         }
-        console.log(unguessedWord);
     }
 
     //Puts unguessedWord in innerHTML & replaces commas with spaces
@@ -100,17 +92,12 @@ document.onkeypress = function startGame() {
         var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
         //checks if key pressed is a letter
         if (letters.includes(guess) === false) {
-            console.log("Not a letter");
             document.getElementById("currentMessage").innerHTML = "Not a letter - guess again.";
         } else {
             //checks if key pressed was already guessed
-            console.log(guess);
-            console.log(guessedLetters);
             if (guessedLetters.includes(guess.toUpperCase())) {
                 document.getElementById("currentMessage").innerHTML = "You already guessed this letter. Guess again";
-                console.log("test1");
             } else {
-                console.log("test2");
                 //changes letter pressed into Uppercase & pushes into guessedLetters array
                 guessedLetters.push(guess.toUpperCase());
                 guessedLettersHTML.innerHTML = guessedLetters.join(" ");
@@ -141,7 +128,7 @@ document.onkeypress = function startGame() {
                     guessesLeft--;
                     guessesLeftHTML.innerHTML = guessesLeft;
                 }
-                //checks if user lost & if so increases losses by 1 & automatically restarts game after 3 seconds
+                //checks if user lost & if so increases losses by 1 & automatically restarts game after 1 second
                 if (guessesLeft === 0) {
                     alert("You lose!");
                     document.getElementById("currentMessage").innerHTML = "The word is:";
@@ -150,7 +137,6 @@ document.onkeypress = function startGame() {
                     document.getElementById("losses").innerHTML = losses;
                     setTimeout(startGame, 1000);
                 }
-
             }
         }
     }
