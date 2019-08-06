@@ -62,6 +62,10 @@ function playRocky() {
     rockySong.play();
 }
 
+//alert game only works on desktops
+swal("This game is currently not available on mobile devices.");
+
+//begin playing by pressing any key
 document.onkeypress = function startGame() {
     guessesLeft = 5;
     unguessedWord = [];
@@ -88,6 +92,7 @@ document.onkeypress = function startGame() {
     //prompt user to guess a letter
     document.getElementById("currentMessage").innerHTML = "Guess a letter.";
     document.onkeypress = function checkLetter() {
+        rockySong.pause();
         var guess = event.key.toLowerCase();
         var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
         //checks if key pressed is a letter
@@ -116,11 +121,10 @@ document.onkeypress = function startGame() {
                     //checks if user won & if so increases wins by one
                     if (!unguessedWord.includes("_")) {
                         playRocky();
-                        alert("You win!");
+                         swal("You win!");
                         wins++;
                         document.getElementById("wins").innerHTML = wins;
                         startGame();
-                        rockySong.pause();
                     }
                 }
                 //if letter pressed not in guessWord, decreases guesses left by one
@@ -130,7 +134,7 @@ document.onkeypress = function startGame() {
                 }
                 //checks if user lost & if so increases losses by 1 & automatically restarts game after 1 second
                 if (guessesLeft === 0) {
-                    alert("You lose!");
+                    swal("You lose!");
                     document.getElementById("currentMessage").innerHTML = "The word is:";
                     document.getElementById("guessWord").innerHTML = wordToGuess.toUpperCase();
                     losses++;

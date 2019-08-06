@@ -43,10 +43,10 @@ h1 {
     text-shadow: 0 0 1.5rem black;
     -webkit-animation-name: fontColorChange;
     -webkit-animation-duration: 3s;
-    -webkit-animation-iteration-count: 100;
+    -webkit-animation-iteration-count: infinite;
     animation-name: fontColorChange;
     animation-duration: 3s;
-    animation-iteration-count: 100;
+    animation-iteration-count: infinite;
 }
 .container {
     height: 21rem;
@@ -103,6 +103,15 @@ h1 {
     z-index: 5;
     background: rgba(0,0,0,0.0);
 }
+.swal-text {
+    color: red;
+    font-family: courier;
+    text-align: center;
+}
+.swal-button {
+    background: red;
+}
+
 /* Header Animation */
 @-webkit-keyframes fontColorChange {
     0% {color: rgba(204,0,0,1.0);}
