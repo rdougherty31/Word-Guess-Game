@@ -63,7 +63,7 @@ function playRocky() {
     rockySong.play();
 }
 
-//alert game only works on desktops
+//alert game only works on desktops if user is on a mobile device
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 swal("This game is currently not available on mobile devices.");
 }
