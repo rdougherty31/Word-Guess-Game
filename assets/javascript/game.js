@@ -49,6 +49,7 @@ var phillyWords = [
     "juneteenth"
 ];
 
+// var isMobile = false;
 var wins = 0;
 var losses = 0;
 var guessesLeft = 5;
@@ -63,7 +64,9 @@ function playRocky() {
 }
 
 //alert game only works on desktops
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 swal("This game is currently not available on mobile devices.");
+}
 
 //begin playing by pressing any key
 document.onkeypress = function startGame() {
