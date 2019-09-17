@@ -49,7 +49,7 @@ var phillyWords = [
     "juneteenth"
 ];
 
-// var isMobile = false;
+// declare variables
 var wins = 0;
 var losses = 0;
 var guessesLeft = 5;
@@ -124,7 +124,7 @@ document.onkeypress = function startGame() {
                     //checks if user won & if so increases wins by one
                     if (!unguessedWord.includes("_")) {
                         playRocky();
-                         swal("You win!");
+                        swal("You win!");
                         wins++;
                         document.getElementById("wins").innerHTML = wins;
                         startGame();
