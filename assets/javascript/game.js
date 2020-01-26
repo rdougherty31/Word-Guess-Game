@@ -97,7 +97,7 @@ document.onkeypress = function startGame() {
     document.onkeypress = function checkLetter() {
         rockySong.pause();
         var guess = event.key.toLowerCase();
-        var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+        var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", 3, "$"];
         //checks if key pressed is a letter
         if (letters.includes(guess) === false) {
             document.getElementById("currentMessage").innerHTML = "Not a letter - guess again.";
